@@ -10,7 +10,7 @@ desenvolvido por [Nathally Souza](https://github.com/nathyts)
 
 1 - Clone o repositório
 
-2 - Instale as dependeências
+2 - Instale as dependências
     
     npm install
 
@@ -19,12 +19,12 @@ desenvolvido por [Nathally Souza](https://github.com/nathyts)
     npm run dev
 
 #### Desafios
-[ ] Incluir os testes unitários pendentes no controller
+[x] Incluir os testes unitários pendentes no controller
   - Verificar a resposta de erro caso o usuário não informe o name
   - Verificar se a função getAllusers está sendo chamada
 
-[ ] Implementa uma validação para o campo email
-  - O usuário nâo pode ser criado caso não informe o email
+[x] Implementar uma validação para o campo email
+  - O usuário não pode ser criado caso não informe o email
   - Escreva o teste unitário
 
 [ ] Refatorar e implementar a rota para deletar o usuário
