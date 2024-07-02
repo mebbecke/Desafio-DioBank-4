@@ -24,5 +24,11 @@ export class UserController {
     getAllUsers = (request: Request, response: Response) => {
         const users = this.userService.getAllUsers()
         return response.status(200).json( users )
-    } 
+    }
+    // TODO: implementar controller de deleteUser()
+    deleteUser = (request: Request, response: Response) => {
+        const user = request.body
+        this.userService.deleteUser(user.name, user.email)
+        return response.status(200).json({ message: 'Usuário apagado'})
+    }
 }

@@ -4,12 +4,10 @@ import { Request } from 'express'
 import { makeMockResponse } from "../__mocks__/mockResponse.mock";
 
 describe('UserController', () => {
-    const mockDb: User[] = [
-        { name: "Paulo", email: "paulo@test.com" },
-        { name: "Jana", email: "jana@test.com" }
-    ]
+    const mockDb: User[] = []
     const mockUserService: Partial<UserService> = {
         createUser: jest.fn(),
+        deleteUser: jest.fn(),
         getAllUsers: jest.fn().mockReturnValue(mockDb)
     }
     
@@ -49,8 +47,24 @@ describe('UserController', () => {
         } as Request
         const mockResponse = makeMockResponse()
         userController.createUser(mockRequest, mockResponse)
+
         expect(mockResponse.state.status).toBe(400)
         expect(mockResponse.state.json).toMatchObject({message: 'Bad request! Nome e Email obrigatórios'})
+    })
+
+    it('Deve apagar o usuário informado', () => {
+        const mockRequest = {
+            body: {
+                name: 'Marina',
+                email: 'marina@test.com'
+            }
+        } as Request
+        const mockResponse = makeMockResponse()
+
+        userController.deleteUser(mockRequest, mockResponse)
+
+        expect(mockResponse.state.status).toBe(200)
+        expect(mockResponse.state.json).toMatchObject({ message: 'Usuário apagado' })
     })
 
     it('Deve retornar todos os usuários', () => {
